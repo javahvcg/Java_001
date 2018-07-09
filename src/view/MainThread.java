@@ -54,7 +54,7 @@ public class MainThread {
             date1 = format.parse(dateFirst);
             date2 = format.parse(dateSecond);
 
-            long diff = date2.getYear()- date1.getYear();
+
 
         } catch (ParseException ex) {
             ex.printStackTrace();

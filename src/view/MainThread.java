@@ -41,7 +41,7 @@ public class MainThread {
             Customer cus = new Customer(id, name, new DateTime(day, month, year));
             listCustomer.add(cus);
         }
-            compareCustomer(listCustomer.get(0), listCustomer.get(1));
+        compareCustomer(listCustomer.get(0), listCustomer.get(1));
     }
 
     public static void compareCustomer(Customer cus1, Customer cus2) {
@@ -49,20 +49,21 @@ public class MainThread {
         String dateSecond = cus2.getBirthday().getDay() + "/" + cus2.getBirthday().getMonth() + "/" + cus2.getBirthday().getYear();
         Date date1 = null;
         Date date2 = null;
-
+        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
         try {
-            date1 = new SimpleDateFormat("dd/MM/yyyy").parse(dateFirst);
-            date2 = new SimpleDateFormat("dd/MM/yyyy").parse(dateSecond);
+            date1 = format.parse(dateFirst);
+            date2 = format.parse(dateSecond);
+
+            long diff = date2.getYear()- date1.getYear();
+
         } catch (ParseException ex) {
             ex.printStackTrace();
         }
-        if(date1.compareTo(date2) > 0 ){
-            System.out.println("Old customer :" +cus1.getName());
-        }
-        else if(date1.compareTo(date2) <0 ) {
-            System.out.println("Young customer :" +cus2.getName());
-        }
-        else{
+        if (date1.compareTo(date2) > 0) {
+            System.out.println("Old customer :" + cus1.getName());
+        } else if (date1.compareTo(date2) < 0) {
+            System.out.println("Young customer :" + cus2.getName());
+        } else {
             System.out.println(" Together age ! ");
         }
 
